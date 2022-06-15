@@ -5,11 +5,372 @@
 <title>LS Fire Group Employee Handbook - Homepage</title>
 <meta name="description" value="The Employee Handbook for">
 <meta name="keywords" value="javascript:void(0)" onclick="loadDoc('Documents/pending.txt'); closeSidebar();">
-<link rel="stylesheet" type="text/css" href="https://dastalios.github.io/css/style.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Crete+Round&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-<script src="https://dastalios.github.io/scripts/scripts.js" type="text/javascript"></script>
+<script src=>/* toggle between adding and removing the "responsive" class to topnav when user clicks the icon */
+	function topnavToggle() {
+		var x = document.getElementById("myTopnav");
+		if(x.className === "topnav") {
+			x.className += " responsive";
+		} else {
+			x.className = "topnav";
+		}
+	}
+	
+	/*Set width of sidebar to 250px and lef margin of page content to 250px */
+	function openSidebar() {
+		var scrWidth = window.innerWidth;
+		if(scrWidth > 600) {
+		document.getElementById("mySidebar").style.width = "250px";
+		/*document.getElementById("main").style.marginLeft = "250px"; */
+		} else {
+			document.getElementById("mySidebar").style.width = "100%";
+		}
+	}
+	
+	/*Set width of sidebar to 0px and lef margin of page content to 0px */
+	function closeSidebar() {
+		document.getElementById("mySidebar").style.width = "0px";
+		document.getElementById("main").style.marginLeft = "0px";
+	}
+	
+	/* testing function of loading docs - Works, but only when server is simulated */
+	function loadDoc(x) {
+		var url = x;
+		var xhttp = new XMLHttpRequest();
+		xhttp.onreadystatechange = function() {
+		  if (this.readyState == 4 && this.status == 200) {
+		   document.getElementById("demo").innerHTML = this.responseText;
+		  }
+		};
+		xhttp.open("GET", url, true);
+		xhttp.send();
+	}
+	</script>
+	<style>
+		* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    }
+    
+    body {
+    background-color: #fdfdf2;
+    height: 100vh;
+    }
+    
+    /* style topnav container */
+    #topNavContainer {
+        width: 100%;
+        height: 163px;
+    }
+
+    /* style nav banner */
+    #navBanner {
+        background-color: #e91d20;
+        font-family: 'Crete Round', serif;
+        font-size: 16px;
+        width:100%;
+        height: 45px;
+        color: #fff;
+        display: block;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #navBanner h3 {
+        letter-spacing: 0.1ch;
+    }
+
+    #logoContainer {
+        width: 100%;
+        background-color: #fff;
+        height: 70px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .logo {
+        max-width: 250px;
+        padding: 10px;
+    }
+
+    /* Add bg colour to top navigation */
+    .topnav {
+        background-color: #fff;
+        overflow: hidden;
+        z-index: 3;
+    }
+    
+    /*style the links in the nav bar */
+    .topnav a {
+        float: left;
+        display: block;
+        color: #161A1D;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 17px;
+   
+    }
+        
+    /*hide the link that should open and close topnav on small screens */
+    .topnav .icon {
+        display: none;
+    }
+    
+    /* dropdown container - positions dropdown content */
+    .dropdown {
+        float: left;
+        overflow: hidden;
+    }
+    
+    /* style the dropdown button to fit inside topnav */
+    .dropdown .dropbtn {
+        font-size: 17px;
+        border: none;
+        outline: none;
+        color: #161A1D;
+        padding: 14px 16px;
+        background-color: inherit;
+        font-family: inherit;
+        margin: 0;
+    }
+    
+    /* style dropdown content (hidden by default) */
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0,2);
+        z-index: 3;
+    }
+    
+    /*style the links inside the dropdown*/
+    .dropdown-content a {
+        float: none;
+        color: black;
+        padding: 14px 16px;
+        text-decoration: none;
+        display: block;
+        text-align: left;
+    }
+    
+    /* add a dark bg on topnav links and the dropdown button on hover */
+    .topnav a:hover, .dropdown:hover .dropbtn {
+        background-color: #d3d3d3;
+        color: #161A1D;
+    }
+    
+    /*add grey bg to dropdown links on hover*/
+    .dropdown-content a:hover {
+        background-color: #ddd;
+        color: black;
+    }
+    
+    /*show the dropdown menu when the user moves the mouse over the dropdown menu */
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+    
+    /*when the screen is less than 600px wide, hide all links except for "home". show the link that contains should open and close the topnav (.icon) */
+    @media screen and (max-width: 600px) {
+        .topnav a:not(:first-child), .dropdown .dropbtn {
+            display: none;
+        }
+        .topnav a.icon {
+            float: right;
+            display: block;
+            font-size: 15px;
+        }
+    }
+    
+    /* 'Responsive' class is added to topnav with JS when the user clicks the icon. Improves appearance on small screens */
+    @media screen and (max-width: 600px) {
+        .topnav.responsive {position: relative;}
+        .topnav.responsive a.icon {
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+        .topnav.responsive a {
+            float: none;
+            display: block;
+            text-align: left;
+        }
+        .topnav.responsive .dropdown {float: none;}
+        .topnav.responsive .dropdown-content {position: relative;}
+        .topnav.responsive .dropdown .dropbtn {
+            display: block;
+            width: 100%;
+            text-align: left;
+        }
+    
+    } 
+    
+    /* the sidebar menu */
+    .sidebar { 
+        height: calc(100vh - 163px);
+        width: 0;
+        position: fixed;
+        z-index: 2;
+        top: 163px;
+        left: 0;
+        background-color: #111;
+        overflow-x: hidden;
+        overflow-y: scroll;
+        transition: 0.5s;
+    }
+    
+    /* Sidebar links */
+    .sidebar a {
+        padding: 8px 8px 8px 32px;
+        text-decoration: none;
+        font-size: 17px;
+        color: #818181;
+        display: block;
+        transition: 0.3s;
+    }
+    
+    /* change colour on mouse over */
+    .sidebar a:hover {
+        color: #f1f1f1;
+    }
+    
+    /*position and style close button */
+    .sidebar .closebtn {
+        position: sticky;
+        top: 0;
+        right: 25px;
+        font-size: 36px;
+        background-color: #111;
+        padding: 8px 8px 0 0;
+        text-align: end;
+    }
+    
+    /* button to open sidebar */
+    .openbtn {
+        font-size: 20px;
+        cursor: pointer;
+        background-color: #161A1D;
+        color: white;
+        border: none;
+        height:calc(100vh - 163px);
+        padding: 10px;
+        display: inline-block;
+        width: 50px;
+        position: relative;
+        z-index: 1;
+    }
+    
+    .openbtn:hover {
+        background-color: #444;
+    }
+    
+    /* Style page content - move  content right when sidebar is open */
+    #main {
+        transition: margin-left .5s;    
+    }
+    
+    /* smaller screens with height <450px */
+    @media screen and (max-height: 450px) {
+        .sidebar {padding-top: 15px;}
+        .sidebar a {font-size: 15px;}
+    }
+    
+    p {
+        display: inline-block;
+    }
+
+    #demo {
+        display: inline-block;
+        width: calc(100% - 60px);
+        /*margin-left: 50px;*/
+        text-align: center;
+        height:calc(100vh - 167px);
+        overflow-y: scroll;
+        position: absolute; /* was static */
+    }
+    
+    .contentHeader {
+        color: #111;
+        display: inline-block;
+        height: 80px;
+        background-color: #eceaea;
+        width:100%;
+        padding: 20px 0;
+        font-size: 36px;
+        letter-spacing: 0.1ch;
+        position: sticky;
+        top: 0;
+        font-family: 'Crete Round', serif;
+    }
+
+    .subHeader {
+        color:red;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 30px;
+        font-weight: 600;
+        padding-top: 35px;
+        padding-bottom: 10px;
+        }
+
+    .contentWords {
+        color: #161A1D;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 500;
+        font-size: 20px;
+        padding: 15px 35px;
+    }
+
+    /* scrollbar messing */
+    ::-webkit-scrollbar {
+        width: 10px;
+      }
+      
+      /* Track */
+      ::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 5px grey; 
+        border-radius: 10px;
+      }
+       
+      /* Handle */
+      ::-webkit-scrollbar-thumb {
+        background: #BA181B; 
+        border-radius: 10px;
+      }
+      
+      /* Handle on hover */
+      ::-webkit-scrollbar-thumb:hover {
+        background: #660708; 
+      }
+
+
+      /* more sidebar edits */
+      .sidebar h4 {
+        padding: 8px 8px 8px 8px;
+        text-decoration: none;
+        font-size: 20px;
+        color: #818181;
+        display: block;
+        transition: 0.3s;
+        text-align: center;
+      }
+
+      .sidebar h5 {
+        padding: 8px 8px 8px 8px;
+        text-decoration: none;
+        font-size: 18px;
+        color: #818181;
+        display: block;
+        transition: 0.3s;
+        text-align: center;
+      }
+	</style>
 </head>
 
 <body>

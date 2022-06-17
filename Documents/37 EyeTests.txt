@@ -1,0 +1,26 @@
+<!--
+INSTRUCTIONS FOR USE/EDITS:
+
+Paragraphs need to go in the middle of: 
+    <p class="contentWords">  
+        Type your paragraph here.  
+    </p>
+
+Headers need to go in the middle of: 
+    <h2 class="contentHeader">  
+        Your Header Goes Here!  
+    </h2>
+
+Sub Headers need to go in the middle of:
+    <h2 class="subHeader"> 
+        Subheader goes here! 
+    </h2>
+
+To add a line break in the middle of your text insert:
+<br>
+
+End of instructions -->
+
+<h2 class="contentHeader">Eye Tests</h2>
+<p class="contentWords">The content for this page is a work in progress. <br> Check back later for new content.</p>
+

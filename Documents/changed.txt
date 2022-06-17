@@ -1,1 +1,1 @@
-<p class="contentWords">This text has been changed, courtesy of Ajax.
+<p class="contentWords">This text has been changed, courtesy of Ajax.</p>
